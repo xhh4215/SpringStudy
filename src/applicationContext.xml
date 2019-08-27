@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 指定类TestDaoImp配置给spring让spring创建实例  -->
+    <bean id="test" class="com.xiaohei.dao.TestDaoImp"/>
+    <!--    依赖注入的练习配置-->
+    <!-- 指定类TestDIDaoImp配置给spring让spring创建实例  -->
+    <!--  bean的常用属性和子元素
+       id：是在beanfactory中的唯一的标识符 获取bean的时候的索引
+       class：bean的具体的实现类，使用类名
+       scope：指定bean的作用域
+         singleton:默认的作用域，使用singleton定义的bean在容器中只有一个bean实例
+         prototype:Spring容器每次获取prototype定义的bean，容器都会创建一个新的bean实例
+         request:再一次http请求中容器将返回一个实例bean 不同的http请求返回不同的bean
+         session:在一个http session中spring将返回一个bean实例
+         application:为每个ServletContext对象创建一个实例 即在一个应用中共享一个bean实例
+         websocket:为每个websocket创建一个bean实例
+       <constructor-arg>:
+        bean的子元素 使用构造方法注入的时候指定构造方法的参数 该元素的index属性指定参数的序号
+        ref:指定属性对BeanFactory其他的bean的引用关系
+        type：指定属性的参数的类型
+        value:属性指定参数的常量值
+       <property>:
+        bean元素的子元素 用于设置一个属性 该元素的
+        name：指定Bean实例中的相应的属性，
+        value：属性指定bean的属性值 、
+        ref：属性指定属性对beanfactory中的其他的bean的引用关系
+       <list>
+        bean元素的子元素用于封装List或数组类型的以依赖注入
+        <map>
+        bean元素的子元素用于封住Map类型的依赖注入
+        <set>
+        bean元素的子元素用于封装Set类型的依赖注入
+         <entry>:map元素的子元素，用来设置键值对
+      -->
+    <bean id="myTestDao" class="com.xiaohei.dao.TestDIDaoImp"/>
+    <bean id="myTestService1" class="com.xiaohei.service.TestIDServiceImp1">
+        <property
+                name="testDIDao" ref="myTestDao"
+        />
+    </bean>
+    <!--    使用构造方法注入-->
+    <bean id="testDIService" class="com.xiaohei.service.TestIDServiceImp">
+        <!--constructor-arg 用于定义构造方法的参数
+          index：定义参数的位置
+          ref：指定引用的实例
+        -->
+        <constructor-arg index="0" ref="myTestDao"/>
+    </bean>
+    <!--    使用构造方法实现对bean的实例化 默认是singleton模式-->
+    <bean id="constructorInstance" class="com.example.instance.BeanClass" scope="prototype"/>
+    <!--静态方法实现对bean的初始化 -->
+    <bean id="staticfactory" class="com.example.instance.BeanStaticFactory" factory-method="createInstance"/>
+    <!--    配置工厂-->
+    <bean id="myFactory" class="com.example.instance.BeanInstanceFactory"/>
+    <!--    使用factory-bean属性指定工厂 使用factory-method属性指定使用工厂中的那个方法进行实例化-->
+    <bean id="staticfactoryinstance" class="com.example.instance.BeanInstanceFactory" factory-bean="myFactory"
+          factory-method="createFactoryInstance"/>
+<!--     init-method指定初始化的方法
+         destroy-method指定销毁的方法
+-->
+    <bean
+            id="beanlife"
+            class="com.example.life.BeanLife"
+            init-method="initMyLife"
+            destroy-method="destoryMyLife"/>
+<!--    使用构造器的方式装配ComplexUser的实例-->
+    <bean id="user1" class="com.example.di.xml.ComplexUser">
+          <constructor-arg index="0" value="栾桂明"/>
+          <constructor-arg index="1" >
+             <list>
+                 <value>唱歌</value>
+                 <value>跳舞</value>
+                 <value>打篮球</value>
+             </list>
+          </constructor-arg>
+        <constructor-arg index="2">
+             <map>
+                 <entry key="danlian" value="大连"/>
+                 <entry key="beijing" value="北京"/>
+                 <entry key="haerbin" value="哈尔滨"/>
+             </map>
+        </constructor-arg>
+        <constructor-arg>
+            <set>
+                <value>栾桂明1</value>
+                <value>栾桂明2</value>
+                <value>栾桂明3</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg index="3">
+            <array>
+                <value>a</value>
+                <value>b</value>
+                <value>c</value>
+                <value>d</value>
+                <value>e</value>
+            </array>
+        </constructor-arg>
+    </bean>
+<!--    使用setter的方式装配ComplexUser的实例-->
+    <bean id="user2" class="com.example.di.xml.ComplexUser">
+        <property name="name" value="栾桂明"/>
+        <property name="hobbyList">
+            <list>
+                <value>看书</value>
+                <value>学习</value>
+                <value>敲代码</value>
+            </list>
+        </property>
+        <property name="resideMap">
+            <map>
+                <entry key="shenzheng" value="深圳"/>
+                <entry key="guangzhou" value="广州"/>
+                <entry key="tianjin" value="天津"/>
+            </map>
+        </property>
+        <property name="aliasSet">
+            <set>
+                <value>栾桂明4</value>
+                <value>栾桂明5</value>
+                <value>栾桂明6</value>
+            </set>
+        </property>
+        <property name="array">
+            <array>
+                <value>111</value>
+                <value>222</value>
+                <value>333</value>
+            </array>
+        </property>
+    </bean>
+
+</beans>

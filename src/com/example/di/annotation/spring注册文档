@@ -1,0 +1,13 @@
+@Component
+ 该注解是一个泛化的概念 仅仅代表一个组件对象可以用在任何层次上
+@Repository
+ 该注解用于将数据访问层的类标识为bean（Dao层） 即注解数据访问层bean 与Component功能相似
+@Service
+ 该注解用于标识一个业务逻辑组件类（service层）  与Component功能相似
+@Controller
+ 该注解用于标识一个控制器组件（Spring MVC的Controller）与Component功能相似
+@Autowired
+ 该注解可以对类成员变量和方法及构造器进行标注，完成自动装配的工作 通过这个注解消除getter和setter方法
+@Resource
+ 该注解与@Autowired的功能相似，区别在于该注解默认是按名称来装配注入的，只有找不到与名称相匹配的bean
+ 才会按照类型来装配注入
