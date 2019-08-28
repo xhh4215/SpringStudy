@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3485adcf-5ca6-46dd-a287-b98cdbba879e" name="Default Changelist" comment="" />
+    <list default="true" id="3485adcf-5ca6-46dd-a287-b98cdbba879e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/example/dynamic/aspect/MyAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/example/dynamic/cglib/CglibDynamicProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/example/dynamic/cglib/TestDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/example/dynamic/jdk/JDKDynamicProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/example/dynamic/jdk/TestDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/example/dynamic/jdk/TestDaoImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/example/dynamic/test/JDKDynamicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/example/di/annotation/service/TestServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/example/di/annotation/service/TestServiceImp.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +31,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
@@ -35,7 +46,7 @@
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -59,7 +70,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TestAnnotation">
+  <component name="RunManager" selected="Application.CglibDynamicTest">
+    <configuration name="CglibDynamicTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.dynamic.test.CglibDynamicTest" />
+      <module name="SpringProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.dynamic.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JDKDynamicTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.dynamic.test.JDKDynamicTest" />
+      <module name="SpringProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.dynamic.cglib.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestAnnotation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.di.annotation.TestAnnotation" />
       <module name="SpringProject" />
@@ -86,32 +123,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestDI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.xiaohei.test.TestDI" />
-      <module name="SpringProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.xiaohei.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestInstance" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.instance.TestInstance" />
-      <module name="SpringProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.instance.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestLife" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.life.test.TestLife" />
       <module name="SpringProject" />
@@ -127,11 +138,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CglibDynamicTest" />
+        <item itemvalue="Application.JDKDynamicTest" />
         <item itemvalue="Application.TestAnnotation" />
         <item itemvalue="Application.TestAssemble" />
         <item itemvalue="Application.TestLife" />
-        <item itemvalue="Application.TestInstance" />
-        <item itemvalue="Application.TestDI" />
       </list>
     </recent_temporary>
   </component>
@@ -146,11 +157,23 @@
       <option name="presentableId" value="Default" />
       <updated>1566868511212</updated>
       <workItem from="1566868515812" duration="8592000" />
-      <workItem from="1566877153590" duration="14209000" />
+      <workItem from="1566877153590" duration="14320000" />
+      <workItem from="1566951923857" duration="5173000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

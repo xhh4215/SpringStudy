@@ -10,7 +10,6 @@ public class TestServiceImp implements TestService {
     @Override
     public void save() {
          testDao.save();
-         System.out.println("testService save" +
-                 "");
+         System.out.println("testService save");
     }
 }
