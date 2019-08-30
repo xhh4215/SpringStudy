@@ -1,6 +1,6 @@
-package com.xiaohei.test;
+package com.example.frist.test;
 
-import com.xiaohei.dao.TestDao;
+import com.example.frist.dao.TestDao;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;

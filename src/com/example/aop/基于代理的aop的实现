@@ -1,0 +1,9 @@
+FactoryBean 负责实例化一个bean
+ProxyFactoryBean 负责为其他bean实例创建代理实例
+ 常用属性
+  target：代理的目标对象
+  proxyInterface：代理需要实现的接口列表
+  intercepterNames：需要织入得Advice
+  proxyTargetClass：对否对类代理而不是接口 false：JDK true：CGLIB
+  singleton：返回的代理对象是不是代理
+  optimize：当设置为true时强制使用CGLIB动态代理

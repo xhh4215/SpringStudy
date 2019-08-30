@@ -1,4 +1,4 @@
-package com.xiaohei.dao;
+package com.example.frist.dao;
 
 public class TestDaoImp implements TestDao{
     @Override

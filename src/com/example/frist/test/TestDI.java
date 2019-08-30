@@ -1,6 +1,6 @@
-package com.xiaohei.test;
+package com.example.frist.test;
 
-import com.xiaohei.service.TestIDService;
+import com.example.frist.service.TestIDService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

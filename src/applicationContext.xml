@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 指定类TestDaoImp配置给spring让spring创建实例  -->
-    <bean id="test" class="com.xiaohei.dao.TestDaoImp"/>
+    <bean id="test" class="com.example.frist.dao.TestDaoImp"/>
     <!--    依赖注入的练习配置-->
     <!-- 指定类TestDIDaoImp配置给spring让spring创建实例  -->
     <!--  bean的常用属性和子元素
@@ -35,14 +35,14 @@
         bean元素的子元素用于封装Set类型的依赖注入
          <entry>:map元素的子元素，用来设置键值对
       -->
-    <bean id="myTestDao" class="com.xiaohei.dao.TestDIDaoImp"/>
-    <bean id="myTestService1" class="com.xiaohei.service.TestIDServiceImp1">
+    <bean id="myTestDao" class="com.example.frist.dao.TestDIDaoImp"/>
+    <bean id="myTestService1" class="com.example.frist.service.TestIDServiceImp1">
         <property
                 name="testDIDao" ref="myTestDao"
         />
     </bean>
     <!--    使用构造方法注入-->
-    <bean id="testDIService" class="com.xiaohei.service.TestIDServiceImp">
+    <bean id="testDIService" class="com.example.frist.service.TestIDServiceImp">
         <!--constructor-arg 用于定义构造方法的参数
           index：定义参数的位置
           ref：指定引用的实例
@@ -58,30 +58,30 @@
     <!--    使用factory-bean属性指定工厂 使用factory-method属性指定使用工厂中的那个方法进行实例化-->
     <bean id="staticfactoryinstance" class="com.example.instance.BeanInstanceFactory" factory-bean="myFactory"
           factory-method="createFactoryInstance"/>
-<!--     init-method指定初始化的方法
-         destroy-method指定销毁的方法
--->
+    <!--     init-method指定初始化的方法
+             destroy-method指定销毁的方法
+    -->
     <bean
             id="beanlife"
             class="com.example.life.BeanLife"
             init-method="initMyLife"
             destroy-method="destoryMyLife"/>
-<!--    使用构造器的方式装配ComplexUser的实例-->
+    <!--    使用构造器的方式装配ComplexUser的实例-->
     <bean id="user1" class="com.example.di.xml.ComplexUser">
-          <constructor-arg index="0" value="栾桂明"/>
-          <constructor-arg index="1" >
-             <list>
-                 <value>唱歌</value>
-                 <value>跳舞</value>
-                 <value>打篮球</value>
-             </list>
-          </constructor-arg>
+        <constructor-arg index="0" value="栾桂明"/>
+        <constructor-arg index="1">
+            <list>
+                <value>唱歌</value>
+                <value>跳舞</value>
+                <value>打篮球</value>
+            </list>
+        </constructor-arg>
         <constructor-arg index="2">
-             <map>
-                 <entry key="danlian" value="大连"/>
-                 <entry key="beijing" value="北京"/>
-                 <entry key="haerbin" value="哈尔滨"/>
-             </map>
+            <map>
+                <entry key="danlian" value="大连"/>
+                <entry key="beijing" value="北京"/>
+                <entry key="haerbin" value="哈尔滨"/>
+            </map>
         </constructor-arg>
         <constructor-arg>
             <set>
@@ -100,7 +100,7 @@
             </array>
         </constructor-arg>
     </bean>
-<!--    使用setter的方式装配ComplexUser的实例-->
+    <!--    使用setter的方式装配ComplexUser的实例-->
     <bean id="user2" class="com.example.di.xml.ComplexUser">
         <property name="name" value="栾桂明"/>
         <property name="hobbyList">
@@ -132,5 +132,40 @@
             </array>
         </property>
     </bean>
-
+    <!--===================使用spring使用ProxyFactoryBean创建aop代理===================-->
+<!--    &lt;!&ndash;    定义一个目标对象&ndash;&gt;-->
+<!--    <bean id="testDao" class="com.example.dynamic.jdk.TestDaoImp"/>-->
+<!--    &lt;!&ndash;    创建一个切面&ndash;&gt;-->
+<!--    <bean id="myAspect" class="com.example.aop.MyAspect"/>-->
+<!--    &lt;!&ndash;    使用spring的工厂类定义一个名字为 testdaoproxy 的代理对象&ndash;&gt;-->
+<!--    <bean id="testDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+<!--        &lt;!&ndash;        指定代理实现的接口&ndash;&gt;-->
+<!--        <property name="proxyInterfaces" value="com.example.dynamic.jdk.TestDao"/>-->
+<!--        &lt;!&ndash;        指定目标对象&ndash;&gt;-->
+<!--        <property name="target" ref="testDao"/>-->
+<!--        &lt;!&ndash;        指定切面 织入环绕通知&ndash;&gt;-->
+<!--        <property name="interceptorNames" value="myAspect"/>-->
+<!--        &lt;!&ndash;        true为CGLIB false为JDK&ndash;&gt;-->
+<!--        <property name="proxyTargetClass" value="true"/>-->
+<!--    </bean>-->
+    <!--===================基于xml配置开发AspectJ===================-->
+    <!--    定义一个目标对象-->
+    <bean id="testDao" class="com.example.dynamic.jdk.TestDaoImp"/>
+    <!--    创建一个切面-->
+    <bean id="myAspect" class="com.example.dynamic.aspect.xml.MyAspect"/>
+    <!--    aop配置-->
+    <aop:config>
+        <!--        aop配置切面 ref：指定切面类-->
+        <aop:aspect ref="myAspect">
+            <!--            配置切入点 通知增强那些方法-->
+            <aop:pointcut expression="execution(* com.example.dynamic.jdk.*.*(..))" id="mypointcut"/>
+            <!--            将通知与切点关联-->
+            <aop:before method="before" pointcut-ref="mypointcut"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="mypointcut"/>
+            <aop:around method="around" pointcut-ref="mypointcut"/>
+<!--            关联异常通知 没有异常将不会执行增强 throwing配置通知的第二个参数的名称 -->
+            <aop:after-throwing method="except" pointcut-ref="mypointcut" throwing="throwable"/>
+            <aop:after method="after" pointcut-ref="mypointcut"/>
+        </aop:aspect>
+    </aop:config>
 </beans>

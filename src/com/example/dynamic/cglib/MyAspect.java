@@ -1,4 +1,4 @@
-package com.example.dynamic.aspect;
+package com.example.dynamic.cglib;
 
 /***
  * 切面类 可以定义多个 通知 即增强处理的方法

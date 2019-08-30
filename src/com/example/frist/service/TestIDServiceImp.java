@@ -1,6 +1,6 @@
-package com.xiaohei.service;
+package com.example.frist.service;
 
-import com.xiaohei.dao.TestDIDao;
+import com.example.frist.dao.TestDIDao;
 
 public class TestIDServiceImp implements TestIDService {
     private TestDIDao testDIDao;

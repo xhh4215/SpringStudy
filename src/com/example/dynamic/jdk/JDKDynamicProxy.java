@@ -1,6 +1,6 @@
 package com.example.dynamic.jdk;
 
-import com.example.dynamic.aspect.MyAspect;
+import com.example.dynamic.cglib.MyAspect;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

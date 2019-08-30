@@ -5,7 +5,7 @@ import com.example.di.annotation.controller.TestController;
 public class TestDaoImp implements TestDao {
     @Override
     public void save() {
-        System.out.println("保存");
+        System.out.println("JDK保存");
     }
 
     @Override

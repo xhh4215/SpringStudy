@@ -1,6 +1,5 @@
 package com.example.dynamic.cglib;
 
-import com.example.dynamic.aspect.MyAspect;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
